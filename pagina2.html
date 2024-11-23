@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface com Animação GSAP</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .animated-button {
+            background: linear-gradient(135deg, #333332, #000000);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            margin: 5px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .animated-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Repositórios no Git</h1>
+        <div class="button-container">
+            <a href="https://github.com/InfinityCodeGov/Meus-c-digos-CSS" class="animated-button">CSS3</a>
+            <a href="https://github.com/InfinityCodeGov/C-digos-Kotlin-Java" class="animated-button">Código Kotlin Java</a>
+            <a href="https://github.com/InfinityCodeGov/Layout-Android" class="animated-button">Código Layout Android</a>
+            <a href="https://github.com/InfinityCodeGov/C-digo-Splash-Activity-" class="animated-button">Código Splash Activity</a>
+            <a href="https://github.com/InfinityCodeGov/Android-manifest" class="animated-button">Código Android Manifest</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script>
+        // Animação de entrada
+        gsap.from('.animated-button', {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "back.out(1.7)"
+        });
+
+        // Animação ao passar o mouse
+        document.querySelectorAll('.animated-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, { 
+                    duration: 0.3, 
+                    scale: 1.1, 
+                    ease: "power1.out"
+                });
+            });
+
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, { 
+                    duration: 0.3, 
+                    scale: 1, 
+                    ease: "power1.out"
+                });
+            });
+        });
+    </script>
+</body>
+</html>
